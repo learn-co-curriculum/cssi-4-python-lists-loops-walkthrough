@@ -24,7 +24,7 @@ To create a list with some elements in it, just add the elements separated by co
 >>> groceries = ['Eggs', 'Milk','Butter']
 ```
 Accessing items in a list
-List items have an index and are accessed like they were in javascript:
+List items have an index and are accessed like they were in javascript. Remember, that the 1st element has an index of 0
 
 ```
 >>> groceries[0]
@@ -41,6 +41,9 @@ What would this print? Why?
 ```
 >>> groceries[0][3]
 ```
+`groceries[0]` would first access the first element of the groceries list, 'Eggs'. Adding the second index, `groceries [0][3]` would then grab the 4th character in 'Eggs', the 's'.
+
+
 #Modifying a List
 The easiest way to modify a list’s content is to just access the list element by its index (numerical place in the list) and use the assignment operator.
 ```
@@ -65,18 +68,19 @@ Using the len function, you can return the number of items in a list:
 ```
 Here are some other list methods that will come in handy:
 ```
-groceries.append('Asparagus')
-['Bread', 'Milk', 'Butter', 'Asparagus']
-
+##extend() adds multiple elements to a list
 groceries.extend(['Rutabaga', 'Ice Cream'])
 ['Bread', 'Milk', 'Butter', 'Asparagus','Rutabaga', 'Ice Cream']
 
+## del() removes the element at that index
 del groceries[3]
 ['Bread', 'Milk', 'Butter','Rutabaga', 'Ice Cream']
 
+## remove() removes the element that matches the string
 groceries.remove('Rutabaga')
 ['Bread','Milk','Butter','Ice Cream']
 
+## .sort sorts alphabetically
 groceries.sort()
 ['Bread', 'Butter', 'Ice Cream', 'Milk']
 ```
@@ -170,6 +174,99 @@ else:
    
 print "You counted to 5"
 ```   
+
+## Extended Loop Examples
+
+### For Loops
+The simplest looping situation is where you need to do something once for every item in a list. To do this, Python uses a for loop:
+
+```
+my_string = raw_input('Type something: ')
+
+for word in my_string.split(): #returns individual words in a string
+   print word.upper()
+
+for letter in my_string:
+   print letter.upper()
+```
+#### Nested For Loops
+You can even put one loop inside another:
+
+```
+my_string = 'hello world'
+
+for word in my_string.split():  # Loop 1
+   for letter in word:         # Loop 2
+       print letter.upper()
+```
+
+Everything indented inside Loop 1 is run every time through the loop -- including Loop 2!
+
+#### Conditionals and For Loops
+Now let's make it more complex.
+
+Let's say you hand me a sack of apples, and you bet me $5 that I can't eat every apple in the sack. It doesn't really matter how many apples are in the sack: I have to eat them all, so I'm just going to concentrate on eating them one at a time.
+
+If I were a soulless robot, my thought process would look something like this:
+
+```
+sack_of_apples = GetApples()
+
+ate_all_the_apples = True
+
+for apple in sack_of_apples:
+    EatApple(apple)  # Crunch, crunch!
+    if TooSickToEatMore():
+   	 # Ugh, maybe that wasn't a good idea.
+   	 ate_all_the_apples = False
+   	 break
+
+if ate_all_the_apples:
+    print 'Gimme my five bucks!'
+else:
+    print 'Please cart me to the hospital'
+```
+#### The range() function
+You can use the range() function above to loop over the number of items in a list. Note that range() returns integers, so that song_num are integers. 
+```
+music_collection = GetSongs()
+
+for song_num in range(len(music_collection)):
+   print 'Song', song_num, 'is', music_collection[song_num]
+```
+ 
+### While loops
+Where for loops let you loop over a finite collection of things, while loops let you keep looping until a given condition evaluates to true.
+
+Let's modify the wager we made earlier. Rather than betting me $5 that I can eat every apple in the sack, here's the deal: if I can eat more than five apples, I get $5; if I can eat 10 apples, I get $10; and for every apple over 10 that I eat, I get an extra $2.
+
+
+```
+apples_eaten = 0
+while not TooSickToEatMoreApples():
+    apple = TakeOneApple()
+    EatApple(apple)
+    apples_eaten += 1
+
+
+# Figure out how much I owe you.
+if apples_eaten == 0:
+    print 'Aww, you didn\'t even try.'
+
+elif apples_eaten < 5:
+    print 'Nope, not enough apples. No money for you.'
+
+elif 5 <= apples_eaten < 10:
+    print 'Fine, here\'s your $5.'
+
+elif apples_eaten >= 10:
+    winnings = 10 + (apples_eaten - 10) * 2
+    print 'Looks like I owe you', winnings, 'dollars.'
+```
+
+Since there's no limit on the number of apples I could eat, other than the size of my stomach, I use a while loop and keep eating until I don't feel well. As I go, I keep track of how many apples I ate so I can send you a bill (which likely won't cover the visit to the ER).
+
+
 
 #Conclusion
 Creating, modifying and accessing lists are imporatant for every programmer, as is being able to use _for_ loops and _while_ loops. Practicing these small examples are a great way to build your foundation as a strong developer.

@@ -270,3 +270,5 @@ Since there's no limit on the number of apples I could eat, other than the size 
 
 #Conclusion
 Creating, modifying and accessing lists are imporatant for every programmer, as is being able to use _for_ loops and _while_ loops. Practicing these small examples are a great way to build your foundation as a strong developer.
+
+<a href='https://learn.co/lessons/cssi-4-python-lists-loops-walkthrough' data-visibility='hidden'>View this lesson on Learn.co</a>
